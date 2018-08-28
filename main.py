@@ -4,7 +4,6 @@ import numpy as np
 import env_wrapper
 import matplotlib.pyplot as plt
 from copy import deepcopy
-# from list_of_colors import *
 from gym.envs.registration import register
 
 register(
@@ -183,7 +182,7 @@ def calculate_discounted_sums_of_reward(trajectory):
         for i in range(n_steps):
             discounted_sum_of_future_rewards = 0
             for k in range(i, n_steps):
-                discounted_sum_of_future_rewards += (gamma ** k) * trajectory[idx_list_of_rewards][k]
+                discounted_sum_of_future_rewards += (gamma ** (k - i)) * trajectory[idx_list_of_rewards][k]
 
             trajectory[idx_list_of_rewards][i] = discounted_sum_of_future_rewards
 
